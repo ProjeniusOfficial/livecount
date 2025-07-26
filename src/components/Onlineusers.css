@@ -1,0 +1,13 @@
+.online-users {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background-color: #1a1a2e;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  font-weight: bold;
+}

@@ -1,0 +1,250 @@
+/* Projects Section Wrapper */
+.projects-section-wrapper {
+  background-color: transparent;
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Keep this to hide content outside the wrapper */
+}
+
+.section-title3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+/* Default Desktop Styles for Carousel */
+.project-scroll-container {
+  display: flex;
+  gap: 3rem; /* Gap between cards on desktop */
+  overflow-x: scroll; /* Allow horizontal scrolling */
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 2rem 1rem;
+  max-width: 1200px; /* Max width for the entire carousel on desktop */
+  margin: 0 auto; /* Center the container */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  scroll-snap-type: none; /* Disable snap on desktop */
+}
+
+/* Hide scrollbar for the project-scroll-container */
+.project-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.project-scroll-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.project-card {
+  min-width: 280px; /* Minimum width for cards on desktop */
+  height: 300px;
+  perspective: 1000px; /* Essential for 3D flip */
+  flex-shrink: 0; /* Ensures cards don't shrink */
+  /* No margin-right here, gap property handles it on desktop */
+  scroll-snap-align: none; /* Disable snap on desktop */
+}
+
+/* Arrow Buttons */
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  color: #0F172A;
+  border: none;
+  margin-top: 50px;
+  padding: 0.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.arrow-button.left {
+  left: 3rem;
+}
+
+.arrow-button.right {
+  right: 3rem;
+}
+
+/* Card Hover Effect - THIS IS THE FLIP ANIMATION CSS */
+.project-card:hover .project-card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 15px 40px #00fff2;
+}
+
+/* Card Inner Structure - ESSENTIAL FOR FLIP */
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s; /* Smooth transition for flip */
+  transform-style: preserve-3d; /* Essential for 3D flip */
+}
+
+.project-card-front,
+.project-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back of the element when facing away */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px #0000000d;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-front {
+  background-color: white;
+  z-index: 2;
+}
+
+.project-card-back {
+  background-color: #fff;
+  transform: rotateY(180deg); /* Rotates the back face to be visible after flip */
+  padding: 1rem;
+  text-align: left;
+  color: #0F172A; /* Ensure text is visible on white background */
+}
+
+.project-content h3 {
+  color: #0F172A; /* Ensure text is visible on white background */
+}
+
+.project-content p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.project-content a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-image {
+  width: 100%;
+  height: 70%; /* Image takes 70% of the front card height */
+  object-fit: cover;
+}
+
+.project-front-label {
+  height: 30%; /* Label takes 30% of the front card height */
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* --- Responsive Styles for Showcase --- */
+
+/* For screens smaller than 1024px (e.g., tablets in landscape, smaller laptops) */
+@media (max-width: 1024px) {
+  .projects-section-wrapper {
+    padding: 3rem 1rem;
+  }
+  .section-title3 {
+    font-size: 2rem;
+  }
+
+  .project-scroll-container {
+    max-width: 700px; /* Adjust max-width to show 2 cards or 1.5 cards */
+    gap: 2rem; /* Reduce gap */
+    padding: 1rem 0.5rem;
+    scroll-snap-type: x mandatory; /* Enable snap for smaller screens */
+  }
+
+  .project-card {
+    min-width: 300px; /* Adjust min-width for cards */
+    height: 300px;
+    scroll-snap-align: start; /* Snap to start of card */
+    margin-right: 2rem; /* Use margin for gap when snapping */
+  }
+  .project-card:last-child {
+    margin-right: 0; /* Remove margin from last card */
+  }
+
+  .arrow-button.left {
+    left: 1rem;
+  }
+  .arrow-button.right {
+    right: 1rem;
+  }
+}
+
+/* For screens smaller than 768px (e.g., tablets in portrait, larger phones) */
+@media (max-width: 768px) {
+  .projects-section-wrapper {
+    padding: 2rem 0.5rem;
+  }
+  .section-title3 {
+    font-size: 1.8rem;
+  }
+
+  .project-scroll-container {
+    max-width: 350px; /* Set max-width to show exactly one card */
+    gap: 0; /* No gap needed if cards are 100% width and margin-right is used */
+    padding: 1rem 0.25rem;
+    scroll-snap-type: x mandatory; /* Ensure snap is active */
+  }
+
+  .project-card {
+    width: 100%; /* Card takes full width of the container */
+    min-width: auto; /* Remove min-width to allow full width */
+    margin-right: 2rem; /* Gap for single card view */
+    scroll-snap-align: start; /* Snap to start */
+  }
+  .project-card:last-child {
+    margin-right: 0;
+  }
+
+  .arrow-button {
+    margin-top: 0; /* Reset vertical offset for arrows */
+  }
+  .arrow-button.left {
+    left: 0.5rem;
+  }
+  .arrow-button.right {
+    right: 0.5rem;
+  }
+}
+
+/* For screens smaller than 480px (e.g., most mobile phones) */
+@media (max-width: 480px) {
+  .projects-section-wrapper {
+    padding: 1.5rem 0.25rem;
+  }
+  .section-title3 {
+    font-size: 1.5rem;
+  }
+
+  .project-scroll-container {
+    max-width: 280px; /* Adjust max-width for mobile phones */
+    padding: 0.5rem 0;
+  }
+
+  .project-card {
+    margin-right: 1.5rem; /* Slightly smaller gap on very small screens */
+  }
+
+  .arrow-button {
+    font-size: 1.2rem;
+    padding: 0.1rem;
+  }
+  .arrow-button.left {
+    left: 0;
+  }
+  .arrow-button.right {
+    right: 0;
+  }
+}

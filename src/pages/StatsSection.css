@@ -1,0 +1,143 @@
+.stats-section {
+  background-color: #0f172a;
+  color: white;
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  height: 300px;
+}
+
+.stats-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon {
+  font-size: 48px;
+  color: #3b82f6;
+  margin-bottom: 10px;
+}
+
+.stat-box h3 {
+  font-size: 26px;
+  color: #3b82f6;
+  margin: 10px 0 5px;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.stat-box p {
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+.stat-count.visible {
+  opacity: 1;
+}
+
+/* Responsive adjustments for Stats Section */
+
+/* For tablets and smaller desktops (e.g., up to 992px) */
+@media (max-width: 992px) {
+  .stats-container {
+    /* Allow 2 columns if space permits, with a smaller min-width */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px; /* Reduce gap */
+  }
+
+  .stat-icon {
+    font-size: 40px; /* Slightly smaller icons */
+  }
+
+  .stat-box h3 {
+    font-size: 22px; /* Slightly smaller count text */
+  }
+
+  .stat-box p {
+    font-size: 13px; /* Slightly smaller description */
+  }
+}
+
+/* For smaller tablets and larger phones (e.g., up to 768px) */
+@media (max-width: 768px) {
+  .stats-section {
+    padding: 40px 15px; /* Adjust padding */
+    min-height: auto; /* Allow height to adjust based on content */
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  .stats-container {
+    /* Force 2 columns on most tablets/larger phones */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Further reduce gap */
+  }
+
+  .stat-icon {
+    font-size: 36px; /* Smaller icons */
+  }
+
+  .stat-box h3 {
+    font-size: 20px; /* Smaller count text */
+  }
+
+  .stat-box p {
+    font-size: 12px; /* Smaller description */
+  }
+}
+
+/* For mobile phones (e.g., up to 576px) */
+@media (max-width: 576px) {
+  .stats-section {
+    padding: 30px 10px; /* Even less padding for small screens */
+  }
+
+  .stats-container {
+    /* Force single column layout for small phones */
+    grid-template-columns: 1fr;
+    gap: 25px; /* Slightly increase gap for single column separation */
+  }
+
+  .stat-icon {
+    font-size: 32px; /* Even smaller icons */
+  }
+
+  .stat-box h3 {
+    font-size: 18px; /* Even smaller count text */
+  }
+
+  .stat-box p {
+    font-size: 11px; /* Even smaller description */
+  }
+}
+
+/* For very small mobile phones (e.g., up to 400px) */
+@media (max-width: 400px) {
+  .stats-section {
+    padding: 25px 5px; /* Minimal padding */
+  }
+
+  .stat-icon {
+    font-size: 28px; /* Smallest icons */
+  }
+
+  .stat-box h3 {
+    font-size: 16px; /* Smallest count text */
+  }
+
+  .stat-box p {
+    font-size: 10px; /* Smallest description */
+  }
+}
